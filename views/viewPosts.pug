@@ -1,0 +1,11 @@
+extends mainTemplate
+
+block content
+  h1 Posts - #{title}
+  for post in posts
+    div(style='background-color: #' + post.bgColor+' ; padding: 20px')
+      h3= post.title
+      h5= post.author
+      br
+      p= post.content
+  
