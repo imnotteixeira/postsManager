@@ -7,17 +7,25 @@ let postSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  author: {
-    type: String,
-    required: true
-  },
   content: {
     type: String,
     required: true
   },
-  bgColor: {
+  bgImg: {
     type: String,
     required: true
+  },
+  textColor: {
+    type: String,
+    required: true
+  },
+  link: {
+    type: String,
+    required: false
+  },
+  linkLabel: {
+    type: String,
+    required: false
   }
 });
 

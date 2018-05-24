@@ -1,5 +1,17 @@
 extends mainTemplate
 
 block content
-  h1 Post Creator
-  
+    form(method='POST', action='/posts/create')
+      #form-group
+        label Title:
+        input.form-control(name='title', type='text')
+      #form-group
+        label Background Image Link (WEB):
+        input.form-control(name='bgImg', type='text')
+      #form-group
+        label Text Color:
+        input.form-control(name='textColor', type='color')
+      #form-group
+        label Content:
+        textarea.form-control(name='content')
+      input.btn.btn-primary(type='submit', value='Submit')

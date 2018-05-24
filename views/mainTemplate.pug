@@ -2,10 +2,25 @@ doctype html
 html
 head
   title postsManager
+  link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
+  link(rel='stylesheet' href='/style/mainStyle.css')
 body
-  block content
-  br
-  hr
+  .d-flex.flex-column.flex-md-row.align-items-center.p-3.px-md-4.mb-3.bg-light.border-bottom.box-shadow
+    a.noUnderline.h5.my-0.mr-md-auto.font-weight-normal(href='/')
+      span(style='font-weight: 400') Ângelo 
+      span(style='font-weight: 800') Teixeira
+    nav.my-2.my-md-0.mr-md-3
+      a.p-2.text-dark(href='#') Education
+      a.p-2.text-dark(href='#') Experience
+      a.p-2.text-dark(href='#') Personal Projects
+    a.btn.btn-outline-primary(href='#') Contact
+
+  .container
+    //h1 #{title}
+    block content
+    br
+    hr
   footer 
-    p By Angelo Teixeira | 2018
+    .container
+      p.text-muted By Angelo Teixeira | 2018
   

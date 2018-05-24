@@ -1,0 +1,17 @@
+.noUnderline {
+  text-decoration: none;
+}
+.noUnderline:hover {
+  text-decoration: none;
+}
+
+#mainCarousel .carousel-item {
+  height: 60vh;
+  max-height: 400px;
+}
+
+#mainCarousel .carousel-caption{
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgba(20, 20 ,20, 0.5);
+}

@@ -1,11 +1,109 @@
 extends mainTemplate
 
 block content
-  h1 Posts - #{title}
-  for post in posts
-    div(style='background-color: #' + post.bgColor+' ; padding: 20px')
-      h3= post.title
-      h5= post.author
-      br
-      p= post.content
+  
+  //#myCarousel.carousel.slide(data-ride='carousel')
+    ol.carousel-indicators
+      li.active(data-target='#myCarousel', data-slide-to='0')
+      li(data-target='#myCarousel', data-slide-to='1')
+      li(data-target='#myCarousel', data-slide-to='2')
+    .carousel-inner
+      .carousel-item.active
+        img.first-slide(src='https://i.imgur.com/INuGLYC.jpg', alt='First slide', width='100%', height='100%')
+        .container
+          .carousel-caption.text-left
+            h1 Example headline.
+            p
+              | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            p
+              a.btn.btn-lg.btn-primary(href='#', role='button') Sign up today
+      .carousel-item
+        img.second-slide(src='https://img00.deviantart.net/0641/i/2017/127/b/7/javascript_wallpaper_by_mrhudson-db8gw2e.png', alt='Second slide', width='100%', height='100%')
+        .container
+          .carousel-caption
+            h1 Another example headline.
+            p
+              | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            p
+              a.btn.btn-lg.btn-primary(href='#', role='button') Learn more
+      .carousel-item
+        img.third-slide(src='https://cosmic-os.github.io/images/pic03.jpg', alt='Third slide', width='100%', height='100%')
+        .container
+          .carousel-caption.text-right
+            h1 One more for good measure.
+            p
+              | Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+            p
+              a.btn.btn-lg.btn-primary(href='#', role='button') Browse gallery
+    a.carousel-control-prev(href='#myCarousel', role='button', data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only Previous
+    a.carousel-control-next(href='#myCarousel', role='button', data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only Next
+
+  
+  #mainCarousel.carousel.slide(data-ride='carousel')
+    if (posts.length)
+      ol.carousel-indicators
+        -for (var i = 0; i < posts.length; i++)
+          if (i == 0)
+            li.active(data-target='#mainCarousel', data-slide-to= i)
+          else
+            li(data-target='#mainCarousel', data-slide-to= i)
+    .carousel-inner
+      if (posts.length)
+        -for (var i = 0; i < posts.length; i++)
+          if (i==0)
+            .carousel-item.active
+              img.first-slide(src= posts[i].bgImg, alt='First slide', width='100%', height='100%')
+              .container
+                .carousel-caption.text-left(style="color: " + posts[i].textColor)
+                  h1= posts[i].title
+                  p= posts[i].content
+                  if (typeof posts[i].link !== 'undefined')
+                    p
+                      a.btn.btn-lg.btn-primary(href=posts[i].link, role='button')=posts[i].linkLabel 
+          else if ((i % 2)-1 == 0)
+            .carousel-item
+              img.second-slide(src= posts[i].bgImg, alt='Second slide', width='100%', height='100%')
+              .container
+                .carousel-caption.text-center(style="color: " + posts[i].textColor)
+                  h1= posts[i].title
+                  p= posts[i].content
+                  if (typeof posts[i].link !== 'undefined')
+                    p
+                      a.btn.btn-lg.btn-primary(href=posts[i].link, role='button')=posts[i].linkLabel 
+          else if ((i % 3) - 2 == 0)
+            .carousel-item
+              img.third-slide(src= posts[i].bgImg, alt='Third slide', width='100%', height='100%')
+              .container
+                .carousel-caption.text-right(style="color: " + posts[i].textColor)
+                  h1= posts[i].title
+                  p= posts[i].content
+                  if (typeof posts[i].link !== 'undefined')
+                    p
+                      a.btn.btn-lg.btn-primary(href=posts[i].link, role='button')= posts[i].linkLabel
+                    
+          else
+            .carousel-item
+              img.nth-slide(src= posts[i].bgImg, alt='Nth slide', width='100%', height='100%')
+              .container
+                .carousel-caption.text-left(style="color: " + posts[i].textColor)
+                  h1= posts[i].title
+                  p= posts[i].content
+                  if (typeof posts[i].link !== 'undefined')
+                    p
+                      a.btn.btn-lg.btn-primary(href=posts[i].link, role='button')=posts[i].linkLabel
+    a.carousel-control-prev(href='#mainCarousel', role='button', data-slide='prev')
+      span.carousel-control-prev-icon(aria-hidden='true')
+      span.sr-only Previous
+    a.carousel-control-next(href='#mainCarousel', role='button', data-slide='next')
+      span.carousel-control-next-icon(aria-hidden='true')
+      span.sr-only Next
+      
+  script(src="/bower_components/bootstrap/assets/js/vendor/jquery-slim.min.js")
+  script(src="/bower_components/bootstrap/js/dist/util.js")
+  script(src="/bower_components/bootstrap/js/dist/carousel.js")
+  
   
